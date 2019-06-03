@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  gather_facts: False
+
+  tasks:
+    - name: build image
+      docker_image: >
+        name="test2"
+        tag="latest"
+        path="/Users/rohithkantheti/HPMS/Assesment"
+        state=build
+    - name: run the site in a docker container
+      shell: docker run -p 9091:80 -itd test2
